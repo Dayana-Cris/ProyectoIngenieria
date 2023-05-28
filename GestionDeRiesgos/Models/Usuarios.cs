@@ -28,9 +28,6 @@ namespace GestionDeRiesgos.Models
         /* idUsuario int not null primary key identity, 
  nombre varchar(100) not null,
  correo varchar(100) not null, 
- password varchar
-        ANDO PROBANDO BYE
-        holis que tal?
-        otro cambio*/
+ password varchar*/
     }
 }

@@ -30,6 +30,7 @@ namespace GestionDeRiesgos.Models
  correo varchar(100) not null, 
  password varchar
         ANDO PROBANDO BYE
-        holis que tal?*/
+        holis que tal?
+        otro cambio*/
     }
 }

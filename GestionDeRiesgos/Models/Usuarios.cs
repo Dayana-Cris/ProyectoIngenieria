@@ -29,6 +29,7 @@ namespace GestionDeRiesgos.Models
  nombre varchar(100) not null,
  correo varchar(100) not null, 
  password varchar
-        ANDO PROBANDO BYE*/
+        ANDO PROBANDO BYE
+        holis que tal?*/
     }
 }

@@ -55,6 +55,7 @@ namespace GestionDeRiesgos.Controllers
             if (ModelState.IsValid)
             {
                 if (claveSegura(usuarios.password))
+                {
                     contexto.Add(usuarios);
                     await contexto.SaveChangesAsync();
                     return RedirectToAction("Index");

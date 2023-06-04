@@ -13,7 +13,8 @@ namespace GestionDeRiesgos.Controllers
             contexto = context;
         }
         //Es el primer metodo que se ejecuta en el controlador
-        public IActionResult Index(int id)
+        public IActionResult Index(int id, string buscar, string idBusqueda, string nombreBusqueda, 
+            string tipoBusqueda, string riesgoAsociado, string restaurar)
         {
             if (id == 1)
             {
@@ -27,7 +28,40 @@ namespace GestionDeRiesgos.Controllers
             {
                 TempData["Mensaje"] = "opcion3";
             }
-            return View(contexto.Planes.ToList());
+            var ListaP = contexto.Planes.ToList();
+            if (buscar != null)
+            {
+                if (idBusqueda != null)
+                {
+                    var NewList = ListaP.Where(x => x.idPlan.StartsWith(buscar));
+                    ListaP = NewList.ToList();
+                }
+
+                if (nombreBusqueda != null)
+                {
+                    var NewList = ListaP.Where(x => x.nombre.StartsWith(buscar));
+                    ListaP = NewList.ToList();
+                }
+
+                if (tipoBusqueda != null)
+                {
+                    var NewList = ListaP.Where(x => x.tipo.StartsWith(buscar));
+                    ListaP = NewList.ToList();
+                }
+
+                if (riesgoAsociado != null)
+                {
+                    var NewList = ListaP.Where(x => x.codigoRiesgo.StartsWith(buscar));
+                    ListaP = NewList.ToList();
+                }
+
+                if (restaurar != null)
+                {
+                    ListaP = contexto.Planes.ToList();
+                }
+            }
+
+            return View(ListaP);
         }
 
         [HttpGet]

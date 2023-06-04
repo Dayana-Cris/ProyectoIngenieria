@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace GestionDeRiesgos.Controllers
 {
@@ -25,7 +26,7 @@ namespace GestionDeRiesgos.Controllers
             contexto = context;
         }
         //Es el primer metodo que se ejecuta en el controlador
-        public IActionResult Index(int id)
+        public IActionResult Index(int id, string buscar, string idBusqueda, string nombreBusqueda, string restaurar)
         {
             if (id == 1)
             {
@@ -39,7 +40,29 @@ namespace GestionDeRiesgos.Controllers
             {
                 TempData["Mensaje"] = "opcion3";
             }
-            return View(contexto.Usuarios.ToList());
+            var ListaP = contexto.Usuarios.ToList();
+            if (buscar != null)
+            {
+                if (idBusqueda != null)
+                {
+                    int idBus = Convert.ToInt32(buscar);
+                    var NewList = ListaP.Where(x => x.idUsuario == idBus) ;
+                    ListaP = NewList.ToList();
+                }
+
+                if (nombreBusqueda != null)
+                {
+                    var NewList = ListaP.Where(x => x.nombre.StartsWith(buscar));
+                    ListaP = NewList.ToList();
+                }
+
+                if (restaurar != null)
+                {
+                     ListaP = contexto.Usuarios.ToList();
+                }
+            }
+
+            return View(ListaP);
         }
 
         [HttpGet]
@@ -65,7 +88,7 @@ namespace GestionDeRiesgos.Controllers
                     TempData["MensajeError"] = MensajeContrasena;
                     return View(usuarios);
                 }
-                
+
             }
             else
             {
@@ -186,26 +209,26 @@ namespace GestionDeRiesgos.Controllers
             //se pregunta si tiene datos
             if (temp != null)
             {
-               
 
- 
-                    //De ser verdadero, se crea identidad del usuario
-                    var userClaims = new List<Claim>()
+
+
+                //De ser verdadero, se crea identidad del usuario
+                var userClaims = new List<Claim>()
                     {
                         new Claim(ClaimTypes.Name, temp.correo)
                     };
 
-                    //permite la autenticación basada en notificaciones donde define la identidad del usuario
-                    //como un conjunto de notificaciones 
-                    var grandmaIdentity = new ClaimsIdentity(userClaims, "User Identity");
-                    var userPrincipal = new ClaimsPrincipal(new[] { grandmaIdentity });
+                //permite la autenticación basada en notificaciones donde define la identidad del usuario
+                //como un conjunto de notificaciones 
+                var grandmaIdentity = new ClaimsIdentity(userClaims, "User Identity");
+                var userPrincipal = new ClaimsPrincipal(new[] { grandmaIdentity });
 
-                    //HttpContext encapsula información especifica de Http sobra la solicitud del usuario
-                    HttpContext.SignInAsync(userPrincipal);
+                //HttpContext encapsula información especifica de Http sobra la solicitud del usuario
+                HttpContext.SignInAsync(userPrincipal);
 
-                    //ubicamos al usuario en la página default
-                    return RedirectToAction("Index", "Home");
-                
+                //ubicamos al usuario en la página default
+                return RedirectToAction("Index", "Home");
+
 
             }
             //almacenamos una mensaje de error para mostrarlo a nivel de front-end

@@ -7,6 +7,19 @@
 
 <h1>Consultar plan</h1>
 
+<form asp-controller="Planes" asp-action="Index">
+    <p>
+        Buscar: <input type="text" name="buscar" class="form-text" />
+        <input asp-controller="Planes" asp-action="Index" asp-route-idBusqueda="1" type="submit" value="Id" class="btn btn-sm btn-dark" />
+        <input asp-controller="Planes" asp-action="Index" asp-route-nombreBusqueda="2" type="submit" value="Nombre" class="btn btn-sm btn-dark" />
+        <input asp-controller="Planes" asp-action="Index" asp-route-tipoBusqueda="3" type="submit" value="Tipo" class="btn btn-sm btn-dark" />
+        <input asp-controller="Planes" asp-action="Index" asp-route-riesgoAsociado="4" type="submit" value="Riesgo asociado" class="btn btn-sm btn-dark" />
+
+
+        <input asp-controller="Planes" asp-action="Index" asp-route-restaurar="restaurar" type="submit" value="Restaurar" class="btn btn-sm btn-dark" />
+
+    </p>
+</form>
 
 <table class="table">
     <thead>

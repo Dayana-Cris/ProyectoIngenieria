@@ -7,7 +7,15 @@
 
 <h1>Consultar Usuario</h1>
 
+<form asp-controller="Usuarios" asp-action="Index">
+    <p>
+        Buscar: <input type="text" name="buscar" class="form-text" />
+        <input asp-controller="Usuarios" asp-action="Index" asp-route-idBusqueda="id" type="submit" value="Id" class="btn btn-sm btn-dark" />
+        <input asp-controller="Usuarios" asp-action="Index" asp-route-nombreBusqueda="nombre" type="submit" value="Nombre" class="btn btn-sm btn-dark" />
+        <input asp-controller="Usuarios" asp-action="Index" asp-route-restaurar="restaurar" type="submit" value="Restaurar" class="btn btn-sm btn-dark" />
 
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>

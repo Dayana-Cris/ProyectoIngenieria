@@ -1,0 +1,63 @@
+﻿@model GestionDeRiesgos.Models.Usuarios;
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Login</h1>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-4">
+        </div>
+
+        <div class="col-sm-4">
+            @*Mostrar un mensaje de error mediante el alert*@
+            @if (TempData["Mensaje"] != null)
+            {
+                //Si tiene datos mostramos el alert en caso de que falle la autenticacion
+                <div class="alert alert-warning" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
+                    <stromg>
+                        @TempData["Mensaje"]
+                    </stromg>
+                </div>
+
+            }
+
+
+            @*Ojo este formulario ejecuta el Action login*@
+            <form asp-action="Login" id="FormularioLogin">
+                @*Entrada de datos para Email*@
+                <div class="form-group">
+                    <label aps-for="Email" class="control-label">Email</label>
+                    <input asp-for="correo" class="form-control" />
+                    <span asp-validation-for="correo" class="text-danger"> </span>
+
+                </div>
+
+                @*Entrada de datos para Password*@
+                <div class="form-group">
+                    <label aps-for="password" class="control-label">Password</label>
+                    <input asp-for="password" class="form-control" />
+                    <span asp-validation-for="password" class="text-danger"> </span>
+                    
+                </div>
+
+                @*Boton encargado de realizar el postback del formulario*@
+                <div class="form-group">
+                    <input type="submit" value="Aceptar" class="btn btn-primary" />
+
+                </div>
+
+            </form>
+        </div>
+
+        <div class="col-sm-4">
+        </div>
+    </div>
+
+</div>
+
+

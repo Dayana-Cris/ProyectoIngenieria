@@ -5,11 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Consultar plan</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -74,9 +72,22 @@
                 @Html.DisplayFor(modelItem => item.observaciones)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idPlan}) |
-                    @Html.ActionLink("Details", "Details", new {  id=item.idPlan }) |
-                    @Html.ActionLink("Delete", "Delete", new {  id=item.idPlan })
+                    @if (TempData["Mensaje"] == "opcion1")
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id=item.idPlan })
+                        ;
+                    }
+                    @if (TempData["Mensaje"] == "opcion2")
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id=item.idPlan})
+                        ;
+
+                    }
+                    @if (TempData["Mensaje"] == "opcion3" || TempData["Mensaje"] == null)
+                    {
+                        @Html.ActionLink("Details", "Details", new { id=item.idPlan })
+                        ;
+                    }
             </td>
         </tr>
 }

@@ -8,22 +8,22 @@ namespace GestionDeRiesgos.Models
         [Key]
         public int idUsuario { get; set; }
 
-        [Required(ErrorMessage ="ADHd")]
-        [Display(Name ="asdasd")]
-        [StringLength(100, ErrorMessage ="adsdad")]
+        [Required(ErrorMessage ="Es necesario ingresar el nombre del usuario")]
+        [Display(Name ="Nombre")]
+        [StringLength(100, ErrorMessage ="El nombre ingresado es demasiado largo")]
         public string  nombre { get; set; }
 
-        [Required(ErrorMessage = "adsdad")]
-        [Display(Name = "adsdad")]
-        [StringLength(100, ErrorMessage = "adsdad")]
+        [Required(ErrorMessage = "Es necesario ingresar el correo del usuario")]
+        [Display(Name = "Correo electronico")]
+        [StringLength(100, ErrorMessage = "El correo que ingreso es demasiado largo")]
         [DataType(DataType.EmailAddress)]
         public string correo { get; set; }
 
 
-        [Required(ErrorMessage = "adsdad")]
-        [Display(Name = "adsdad")]
-        [StringLength(100, ErrorMessage = "adsdad")]
-        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Es necesario ingresar la contraseña del usuario")]
+        [Display(Name = "Contraseña")]
+        [StringLength(100, ErrorMessage = "La contraseña ingresada es demasiado larga")]
+        //[DataType(DataType.Password)]
         public string password { get; set; }
         /* idUsuario int not null primary key identity, 
  nombre varchar(100) not null,

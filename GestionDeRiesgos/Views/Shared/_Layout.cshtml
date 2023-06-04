@@ -18,23 +18,125 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="nav nav-tabs" id="navId" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" >Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Riesgos</a>
+                            <div class="dropdown-menu">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Riesgos" asp-action="Create">Agregar</a>
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Riesgos" asp-action="Index" asp-route-id="1">Editar</a>
+                                    <div class="dropdown-divider"></div>
+
+                                   
+
+                                }
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Riesgos" asp-action="Index" asp-route-id="3">Consultar</a>
+                                <div class="dropdown-divider"></div>
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    
+
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Riesgos" asp-action="Index" asp-route-id="2">Eliminar</a>
+                                    <div class="dropdown-divider"></div>
+
+                                }
+
+
+                                <div class="dropdown-divider"></div>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Planes</a>
+                            <div class="dropdown-menu">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Planes" asp-action="Create">Agregar</a>
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Planes" asp-action="Index" asp-route-id="1">Editar</a>
+                                    <div class="dropdown-divider"></div>
+
+
+
+                                }
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Planes" asp-action="Index" asp-route-id="3">Consultar</a>
+                                <div class="dropdown-divider"></div>
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+
+
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Planes" asp-action="Index" asp-route-id="2">Eliminar</a>
+                                    <div class="dropdown-divider"></div>
+
+                                }
+
+
+                                <div class="dropdown-divider"></div>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Riesgos" asp-action="Index">Riesgos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Planes" asp-action="Index">Planes</a>
-                        </li>
+                        @*Solo si esta autenticado puede realiazar el cambio de contrasena*@
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Seguridad</a>
+                                <div class="dropdown-menu">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Create">Agregar</a>
+                                        <div class="dropdown-divider"></div>
+
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index" asp-route-id="1">Editar</a>
+                                        <div class="dropdown-divider"></div>
+
+
+
+                                    }
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index" asp-route-id="3">Consultar</a>
+                                    <div class="dropdown-divider"></div>
+
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+
+
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index" asp-route-id="2">Eliminar</a>
+                                        <div class="dropdown-divider"></div>
+
+                                    }
+
+
+                                    <div class="dropdown-divider"></div>
+                                </div>
+                            </li>
+                        }
+
+                        
+
                     </ul>
+                    <ul>
+                        @*Solo si no esta autenticado debe aparecer la opcion de loguearse*@
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Cerrar sesion</a>
+                            </li>
+                        }
+
+                    </ul>
+                   
                 </div>
             </div>
         </nav>

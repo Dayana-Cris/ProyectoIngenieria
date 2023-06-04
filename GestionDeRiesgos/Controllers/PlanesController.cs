@@ -13,8 +13,20 @@ namespace GestionDeRiesgos.Controllers
             contexto = context;
         }
         //Es el primer metodo que se ejecuta en el controlador
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
+            if (id == 1)
+            {
+                TempData["Mensaje"] = "opcion1";
+            }
+            if (id == 2)
+            {
+                TempData["Mensaje"] = "opcion2";
+            }
+            if (id == 3)
+            {
+                TempData["Mensaje"] = "opcion3";
+            }
             return View(contexto.Planes.ToList());
         }
 

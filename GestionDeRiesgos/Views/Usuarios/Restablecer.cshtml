@@ -1,0 +1,64 @@
+﻿@model GestionDeRiesgos.Models.SeguridadRestablecer;
+@{
+    ViewData["Title"] = "Restablecer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Restablecer</h1>
+@*formulario para restablecer la contraseña*@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+
+        @*formulario*@
+        <div class="col-md-4">
+            @*Se revisa si existe un mensaje de error*@
+            @if (TempData["MensajeError"] != null)
+            {
+                //se muestra el mensaje de error
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                    <strong>@TempData["MensajeError"]</strong>
+                </div>
+
+            }
+
+            <form asp-action="Restablecer" method="post" id="FormularioRestablecer">
+                @*mostrar los error para las validaciones en las entradas de datos*@
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                @*solicitud del password*@
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Contraseña actual</label>
+                    <input type="password" asp-for="Password" class="form-control" />
+                </div>
+
+                @*Solicitud del nuevo password*@
+                <div class="mb-3">
+                    <label asp-for="NewPassword" class="form-label">Nueva contraseña</label>
+                    <input type="password" asp-for="NewPassword" class="form-control" />
+                </div>
+
+                @*Solicitud de confirmar new password*@
+                <div class="mb-3">
+                    <label asp-for="ConfirmarPassword" class="form-label">Confirma nueva contraseña</label>
+                    <input type="password" asp-for="ConfirmarPassword" class="form-control" />
+                </div>
+
+                @*botón para ejecutar el action*@
+                <div class="mb-3">
+                    <input type="submit" value="aceptar" class="btn btn-primary" />
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
+
+
+

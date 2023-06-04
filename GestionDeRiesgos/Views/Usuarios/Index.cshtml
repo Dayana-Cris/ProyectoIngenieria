@@ -5,11 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Consultar Usuario</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -22,33 +20,46 @@
             <th>
                 @Html.DisplayNameFor(model => model.correo)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.password)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.idUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.correo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.password)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idUsuario }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario  })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo)
+                </td>
+               
+                <td>
+                    @if (TempData["Mensaje"] == "opcion1")
+                    {
+                        @Html.ActionLink("Editar nombre", "Edit", new { id=item.idUsuario })
+                        ;
+
+
+
+                    }
+                    @if (TempData["Mensaje"] == "opcion2")
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario})
+                        ;
+
+                    }
+                    @if (TempData["Mensaje"] == "opcion3" || TempData["Mensaje"] == null)
+                        {
+                        @Html.ActionLink("Details", "Details", new { id=item.idUsuario })
+                        ;
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -54,7 +54,7 @@ namespace GestionDeRiesgos.Models
 
         [Required(ErrorMessage = "Es necesario ingresar el estado del plan")]
         [Display(Name = "Estado")]
-        [StringLength(1, ErrorMessage = "El nombre ingresado es demasiado largo")]
+        //[StringLength(1, ErrorMessage = "El nombre ingresado es demasiado largo")]
         public char estado { get; set; }
 
         [Required(ErrorMessage = "Es necesario ingresar las observaciones correspondientes del plan")]

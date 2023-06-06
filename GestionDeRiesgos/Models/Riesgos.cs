@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+
 namespace GestionDeRiesgos.Models
 {
     public class Riesgos
@@ -34,7 +35,7 @@ namespace GestionDeRiesgos.Models
         public DateTime fecha { get; set; }
         [Required(ErrorMessage = "Es necesario ingresar el estado del riesgo")]
         [Display(Name = "Estado")]
-        [StringLength(1, ErrorMessage = "El nombre ingresado es demasiado largo")]
+        //[StringLength(1, ErrorMessage = "El nombre ingresado es demasiado largo")]
         public char estado { get; set; }
         [Required(ErrorMessage = "Es necesario ingresar las observaciones correspondientes del riesgo")]
         [Display(Name = "Observaciones")]

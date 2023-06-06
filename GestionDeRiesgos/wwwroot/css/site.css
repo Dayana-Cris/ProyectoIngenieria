@@ -16,3 +16,19 @@ html {
 body {
   margin-bottom: 60px;
 }
+.same-size-btn {
+    width: 150px; /* Ajusta el ancho según tus necesidades */
+    height: 40px; /* Ajusta la altura según tus necesidades */
+    border-radius: 20px;
+    font-weight: bold;
+}
+.tamanio{
+    font-size:140px;
+    
+   
+}
+.linea-vertical {
+    border-left: 2px solid #41ADE7;
+    height: 50%;
+   
+}

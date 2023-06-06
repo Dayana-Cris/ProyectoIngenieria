@@ -65,6 +65,9 @@ namespace GestionDeRiesgos
 
                 //Se indica la ruta por default
                 app.UseEndpoints(endpoints => endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{Id?}"));
-            }//Cierre del metodo configure
-        }
+                //Esto permitirá que el servidor web sirva los archivos estáticos, como imágenes, desde la carpeta "wwwroot".
+                app.UseStaticFiles();
+
+        }//Cierre del metodo configure
+    }
 }

@@ -6,7 +6,16 @@
 }
 
 <h1>Consultar plan</h1>
-
+@if (TempData["MensajeLista"] != null)
+{
+    //Si tiene datos mostramos el alert en caso de que falle la autenticacion
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
+        <stromg>
+            @TempData["MensajeLista"]
+        </stromg>
+    </div>
+}
 <form asp-controller="Planes" asp-action="Index">
     <p>
         Buscar: <input type="text" name="buscar" class="form-text" />

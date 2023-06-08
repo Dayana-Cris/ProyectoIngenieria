@@ -31,9 +31,7 @@ namespace GestionDeRiesgos.Models
         [Display(Name = "Impacto")]
         public int impacto { get; set; }
 
-        [Required(ErrorMessage = "Es necesario ingresar la categoría del riesgo")]
-        [Display(Name = "Categoría")]
-        [StringLength(100, ErrorMessage = "La categoría que se ingreso es demasiado larga")]
+        
         public string categoria { get; set; }
 
         [Required(ErrorMessage = "Es necesario ingresar la fecha cuando se crea el riesgo")]

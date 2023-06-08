@@ -69,14 +69,58 @@ namespace GestionDeRiesgos.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("codigoRiesgo, nombre, descripcion, probabilidad, impacto, categoria," +
+        public async Task<IActionResult> Create([Bind("codigoRiesgo, nombre, descripcion, probabilidad, impacto," +
             "fecha, estado, observaciones")] Riesgos  riesgos)
         {
-            if (ModelState.IsValid)
+            riesgos.categoria = "Vacio";
+            if (riesgos.codigoRiesgo != null && riesgos.nombre != null && riesgos.descripcion != null && 
+                riesgos.probabilidad != null && riesgos.impacto != null && riesgos.fecha != null &&
+                riesgos.estado != null && riesgos.observaciones != null)
             {
-                contexto.Add(riesgos);
-                await contexto.SaveChangesAsync();
-                return RedirectToAction("Index");
+                //Toda la lista de abreviaciones
+                var listaAbrev = contexto.AbrevRiesgos.ToList();
+                //Se busca el codigo de riesgo que entro con el riesgo dentro de la lista de abreviaciones
+                var newListA = listaAbrev.Where(x => x.abreviacion == riesgos.codigoRiesgo);
+                //Trae la categoria del primer elemeneto de la abreviacion que coincida
+                riesgos.categoria = newListA.First().categoria;
+                //Si esta lista no esta vacia quiere decir que la abreviacion si exsite en el sistema
+                if (newListA.Count()>0)
+                {
+                    //Lista completa de riesgos
+                    var ListaP = contexto.Riesgos.ToList();
+                    //Lista de riesgos que coincidan con la abreviacion
+                    var NewList = ListaP.Where(x => x.codigoRiesgo.StartsWith(riesgos.codigoRiesgo));
+                    //Se devulve esta lista
+                    ListaP = NewList.ToList();
+                    if(ListaP.Count()>0)
+                    {
+                        //Debo sacar el numero del ultimo codigo registrado
+                        string[] codigo = ListaP.Last().codigoRiesgo.Split(" ");
+                        //Pero como sale en string lo debo
+                        //Convertie en numero, para poder sumarle uno despues
+                        var numero = Convert.ToInt32( codigo[1] );
+                        //Ahora que ya tengo el numero lo asigno al codigo
+                        riesgos.codigoRiesgo = riesgos.codigoRiesgo +" "+ (numero + 1);
+
+                    }
+                    else
+                    {
+                        riesgos.codigoRiesgo = riesgos.codigoRiesgo + " " + 1;
+                    }
+
+                    contexto.Add(riesgos);
+                    await contexto.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["MensajeCodigo"] = "No existe esa abreviacion de riesgo";
+                    return View(riesgos);
+                }
+
+
+
+
             }
             else
             {

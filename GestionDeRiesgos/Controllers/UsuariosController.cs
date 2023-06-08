@@ -55,7 +55,10 @@ namespace GestionDeRiesgos.Controllers
                     var NewList = ListaP.Where(x => x.nombre.StartsWith(buscar));
                     ListaP = NewList.ToList();
                 }
-
+                if (ListaP.Count < 1)
+                {
+                    TempData["MensajeLista"] = "No existe ningún usuario para esta búsqueda";
+                }
                 if (restaurar != null)
                 {
                      ListaP = contexto.Usuarios.ToList();

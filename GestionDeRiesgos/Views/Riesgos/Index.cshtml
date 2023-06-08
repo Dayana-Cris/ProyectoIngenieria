@@ -1,88 +1,160 @@
 ﻿@model IEnumerable<GestionDeRiesgos.Models.Riesgos>
 
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -Index</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GestionDeRiesgos.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+
+</head>
+<body>
+
+
+
+
 
 <h1>Consultar Riesgo</h1>
 <form asp-controller="Planes" asp-action="Index">
-    <p>
-        Buscar: <input type="text" name="buscar" class="form-text" />
-        <input asp-controller="Riesgos" asp-action="Index" asp-route-idBusqueda="1" type="submit" value="Código" class="btn btn-sm btn-dark" />
-        <input asp-controller="Riesgos" asp-action="Index" asp-route-nombreBusqueda="2" type="submit" value="Nombre" class="btn btn-sm btn-dark" />
-        <input asp-controller="Riesgos" asp-action="Index" asp-route-probabilidad="3" type="submit" value="Probabilidad" class="btn btn-sm btn-dark" />
+    <div>
+       
+         <input type="text" style="border:none" name="buscar" class="input-buscar input-color" autocomplete="off" placeholder="Buscar" />
+        <button asp-controller="Riesgos" asp-action="Index" asp-route-idBusqueda="1" type="submit" value="Código" class=" btnFiltros"> Código</button>
+        <button asp-controller="Riesgos" asp-action="Index" asp-route-nombreBusqueda="2" type="submit" value="Nombre" class=" btnFiltros"> Nombre </button>
+        <button asp-controller="Riesgos" asp-action="Index" asp-route-probabilidad="3" type="submit" value="Probabilidad" class=" btnFiltros">Probabilidad</button>
 
 
-        <input asp-controller="Riesgos" asp-action="Index" asp-route-restaurar="restaurar" type="submit" value="Restaurar" class="btn btn-sm btn-dark" />
+        <button asp-controller="Riesgos" asp-action="Index" asp-route-restaurar="restaurar" type="submit" value="Restaurar" class=" btnFiltros"> Restaurar</button>
 
-    </p>
+    </div>
 </form>
+<div class="table-responsive">
+
 
 <table class="table">
     <thead>
-        <tr>
+        <tr class="solid-line">
             <th>
-                @Html.DisplayNameFor(model => model.codigoRiesgo)
+                <div class="encabezadoTabla encabezado-tabla" style="font-size:13px" >
+                     @Html.DisplayNameFor(model => model.codigoRiesgo)
+                </div>
+               
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.nombre)
+                 <div class="encabezadoTabla">
+                           @Html.DisplayNameFor(model => model.nombre)
+                </div>
+              
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.descripcion)
+                 <div class="encabezadoTabla">
+                      @Html.DisplayNameFor(model => model.descripcion)   
+                </div>
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.probabilidad)
+                 <div class="encabezadoTabla">
+                          @Html.DisplayNameFor(model => model.probabilidad)
+                </div>
+               
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.impacto)
+                 <div class="encabezadoTabla">
+                          @Html.DisplayNameFor(model => model.impacto)
+                </div>
+               
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.categoria)
+                 <div class="encabezadoTabla">
+                         @Html.DisplayNameFor(model => model.categoria) 
+                </div>
+               
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fecha)
+                 <div class="encabezadoTabla">
+                          @Html.DisplayNameFor(model => model.fecha)
+                </div>
+               
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.estado)
+                 <div class="encabezadoTabla">
+                         @Html.DisplayNameFor(model => model.estado) 
+                </div>
+               
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.observaciones)
+                 <div class="encabezadoTabla">
+                         @Html.DisplayNameFor(model => model.observaciones)
+                </div>
+                
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.codigoRiesgo)
+        <tr class="solid-line  ">
+            <td class="celdasTabla " >
+                <div class=" vertical-line">
+                     @Html.DisplayFor(modelItem => item.codigoRiesgo)
+                </div>
+                    
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
+            <td class="celdasTabla ">
+                 <div class=" vertical-line">
+                     @Html.DisplayFor(modelItem => item.nombre)
+                </div>
+               
+            </td >
+            <td class="celdasTabla ">
+                 <div class=" vertical-line">
+                      @Html.DisplayFor(modelItem => item.descripcion)
+                </div>
+               
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
+            <td class="celdasTabla ">
+                   <div class=" vertical-line">
+                       @Html.DisplayFor(modelItem => item.probabilidad)
+                </div>
+              
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.probabilidad)
+            <td class="celdasTabla  ">
+                <div class=" vertical-line">
+                       @Html.DisplayFor(modelItem => item.impacto)
+                </div>
+               
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.impacto)
-            </td>
-            <td>
+            <td class="celdasTabla  ">
+                 <div class=" vertical-line">
                 @Html.DisplayFor(modelItem => item.categoria)
+                </div>
+               
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha)
+            <td class="celdasTabla ">
+                  <div class=" vertical-line">
+                 @Html.DisplayFor(modelItem => item.fecha)
+                </div>
+               
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.estado)
+            <td class="celdasTabla  ">
+                  <div class=" vertical-line">
+                  @Html.DisplayFor(modelItem => item.estado)
+                </div>
+               
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.observaciones)
+            <td class="celdasTabla ">
+                 <div class=" vertical-line">
+                    @Html.DisplayFor(modelItem => item.observaciones)
+                </div>
+              
             </td>
-            <td>
+            <td class="celdasTabla">
                     @if (TempData["Mensaje"] == "opcion1")
                     {
                         @Html.ActionLink("Edit", "Edit", new { id=item.codigoRiesgo });
@@ -102,3 +174,7 @@
 }
     </tbody>
 </table>
+</div>
+
+</body>
+</html>

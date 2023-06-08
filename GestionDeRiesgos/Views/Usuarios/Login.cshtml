@@ -1,10 +1,26 @@
 ﻿@model GestionDeRiesgos.Models.Usuarios;
-@{
-    ViewData["Title"] = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<h1>Login</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GestionDeRiesgos.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+
+</head>
+<body>
+
+
+<div class="row justify-content-start">
+   <div class="linea-vertical-login "><h1 class="letra-login">SGRU</h1></div>
+   
+
+</div>
+
 
 <div class="container">
     <div class="row">
@@ -25,31 +41,42 @@
                 </div>
 
             }
-
-
+            <div class="row">
+                <div class="col-12  justify-content-center d-flex ">
+                     <h2 class="letra-login">Iniciar Sesión</h2>
+            </div>
+            </div>
+           
             @*Ojo este formulario ejecuta el Action login*@
             <form asp-action="Login" id="FormularioLogin">
                 @*Entrada de datos para Email*@
-                <div class="form-group">
-                    <label aps-for="Email" class="control-label">Email</label>
-                    <input asp-for="correo" class="form-control" />
+                <div class="form-group mb-4">
+                   
+                    <input asp-for="correo" class="form-control input-login input-color" placeholder="Email" autocomplete="off" />
                     <span asp-validation-for="correo" class="text-danger"> </span>
 
                 </div>
 
                 @*Entrada de datos para Password*@
                 <div class="form-group">
-                    <label aps-for="password" class="control-label">Password</label>
-                    <input asp-for="password" class="form-control" />
+                   
+                    <input asp-for="password" class="form-control input-login input-color" placeholder="Contraseña" autocomplete="off" />
                     <span asp-validation-for="password" class="text-danger"> </span>
                     
                 </div>
 
                 @*Boton encargado de realizar el postback del formulario*@
-                <div class="form-group">
-                    <input type="submit" value="Aceptar" class="btn btn-primary" />
+
+              <div class="row">
+                <div class="col-12  justify-content-center d-flex ">
+                     <div class="form-group">
+                    @*<input type="submit" value="Aceptar" class="  btn btn-primary " />*@
+                    <button type="submit" value="Aceptar" class=" btnIniciar">Entrar</button>
 
                 </div>
+            </div>
+            </div>
+              
 
             </form>
         </div>
@@ -59,5 +86,7 @@
     </div>
 
 </div>
+</body>
+</html>
 
 

@@ -16,6 +16,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+/*Inicio*/
 .same-size-btn {
     width: 150px; /* Ajusta el ancho según tus necesidades */
     height: 40px; /* Ajusta la altura según tus necesidades */
@@ -25,10 +26,240 @@ body {
 .tamanio{
     font-size:140px;
     
-   
+}
+.colorBtn {
+    background-color: #41ADE7;
+    color:white;
 }
 .linea-vertical {
     border-left: 2px solid #41ADE7;
     height: 50%;
    
 }
+/*Login*/
+.linea-vertical-login {
+    border-left: 4px solid #41ADE7;
+    height: 50%;
+}
+.letra-login {
+    color: #41ADE7;
+    font-weight:bold
+}
+
+.input-login{
+    border-radius:30px;
+    background-color:darkgrey;
+    height:50px;
+    font-size:20px;
+   
+
+}
+.input-color {
+    color: white;
+    font-weight: bold;
+}
+.input-color::placeholder {
+    color: white; 
+    font-weight:bold;
+}
+
+    .input-color:focus {
+        background-color: darkgrey;
+        color: white;
+        font-weight: bold;
+        
+    }
+
+    .input-color::first-line {
+        color: white;
+        font-weight: bold;
+    }
+  
+.btnIniciar {
+    --color: #41ADE7;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+}
+
+    .btnIniciar::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: var(--color);
+        height: 150px;
+        width: 200px;
+        border-radius: 50%;
+        color:white;
+        
+    }
+    .btnIniciar::after{
+        color:black;
+    }
+
+    .btnIniciar:hover {
+        color: #fff ;
+    }
+
+    .btnIniciar:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+    }
+
+    .btnIniciar:hover:before {
+    top: -30px;
+    left: -30px;
+    }
+
+    .btnIniciar:active:before {
+        background: #41ADE7;
+        transition: background 0s;
+    }
+
+
+/*/////////////////////////*/
+/*
+Consultar Tablas*/
+
+.input-buscar {
+    border-radius: 20px;
+    background-color: gainsboro;
+    height: 27px;
+    font-size: 20px;
+    padding:20px;
+
+
+}
+.input-buscar:focus{
+    border:none;
+}
+    .input-buscar:active {
+        border: none;
+    }
+  
+.input-color {
+    color: white;
+    font-weight: bold;
+}
+
+.btnFiltros {
+    --color: #41ADE7;
+    font-family: inherit;
+    display: inline-block;
+    width: auto;
+    height: 2.6em;
+    
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 13px;
+    border-radius: 6px;
+    
+    color: var(--color);
+}
+
+    .btnFiltros::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: var(--color);
+        height: 150px;
+        width: 200px;
+        border-radius: 50%;
+        color: white;
+    }
+
+    .btnFiltros::after {
+        color: black;
+    }
+
+    .btnFiltros:hover {
+        color: #fff;
+    }
+
+    .btnFiltros:before {
+        top: 100%;
+        left: 100%;
+        transition: all .7s;
+    }
+
+    .btnFiltros:hover:before {
+        top: -30px;
+        left: -30px;
+    }
+
+    .btnFiltros:active:before {
+        background: #41ADE7;
+        transition: background 0s;
+    }
+
+
+.encabezadoTabla {
+    border-radius: 10px;
+    background-color: #41ADE7;
+    color:white;
+    padding:3px;
+    justify-content:center;
+    display:flex;
+}
+.solid-line {
+    border-bottom: 5px solid #41ADE7;
+    
+}
+.borde-celda{
+
+}
+
+.celdasTabla {
+    text-align: center;
+   
+   
+   
+}
+.vertical-line {
+    position: relative;
+   
+}
+
+    .vertical-line::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 20px; /* Altura de la línea vertical  */
+        width: 4px; 
+        background-color: #41ADE7;
+        margin-top: 0%; /* Posición vertical de la línea vertical */
+        
+        border-radius:5px;
+    }
+
+    @media (max-width: 768px) {
+    .encabezado-tabla {
+        font-size: 7px;
+    }
+        }
+@media (max-width: 1800px) {
+    .encabezado-tabla {
+        font-size: 6px;
+    }
+}
+
+  
+

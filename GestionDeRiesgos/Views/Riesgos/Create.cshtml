@@ -5,10 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -Create</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GestionDeRiesgos.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+
+</head>
+
+<body>
+
+
+
+
 <h1>Añadir Riesgo</h1>
 
 <h4>Riesgos</h4>
 <hr />
+
+
+
+       
+
+
+
 <div class="row">
     <div class="col-md-4">
 
@@ -28,53 +53,105 @@
 
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="codigoRiesgo" class="control-label"></label>
-                <input asp-for="codigoRiesgo" class="form-control" />
+             <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                <label asp-for="codigoRiesgo" class="control-label "></label>
+                <input asp-for="codigoRiesgo" class="form-control inputs" placeholder="Código de riesgo" />
                 <span asp-validation-for="codigoRiesgo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="nombre" class="control-label"></label>
-                <input asp-for="nombre" class="form-control" />
+                <input asp-for="nombre" class="form-control inputs"  placeholder="Nombre"  />
                 <span asp-validation-for="nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="descripcion" class="control-label"></label>
-                <input asp-for="descripcion" class="form-control" />
+                <input asp-for="descripcion" class="form-control inputs"  placeholder="Descripción" />
                 <span asp-validation-for="descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="probabilidad" class="control-label"></label>
-                <input asp-for="probabilidad" class="form-control" />
+                <input asp-for="probabilidad" class="form-control inputs"  placeholder="Probabilidad" />
                 <span asp-validation-for="probabilidad" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            </div>
+             <div class="col-4">
+                  <div class="form-group">
                 <label asp-for="impacto" class="control-label"></label>
-                <input asp-for="impacto" class="form-control" />
+                <input asp-for="impacto" class="form-control inputs"   placeholder="Impacto"/>
                 <span asp-validation-for="impacto" class="text-danger"></span>
             </div>
             
             <div class="form-group">
                 <label asp-for="fecha" class="control-label"></label>
-                <input asp-for="fecha" class="form-control" />
+                <input asp-for="fecha" class="form-control inputs"  placeholder="Fecha" />
                 <span asp-validation-for="fecha" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="estado" class="control-label"></label>
-                <input asp-for="estado" class="form-control" />
+                <input asp-for="estado" class="form-control inputs" placeholder="Estado" />
+                <span asp-validation-for="estado" class="text-danger"></span>
+            </div>
+            </div>
+             <div class="col-4">
+                   <div class="form-group">
+                <label asp-for="observaciones" class="control-label"></label>
+                <input asp-for="observaciones" class="form-control inputs" placeholder="Observaciones" />
+                <span asp-validation-for="observaciones" class="text-danger"></span>
+            </div>
+            </div>
+
+        </div>
+          @*  <div class="form-group">
+                <label asp-for="codigoRiesgo" class="control-label "></label>
+                <input asp-for="codigoRiesgo" class="form-control inputs" placeholder="Código de riesgo" />
+                <span asp-validation-for="codigoRiesgo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control inputs"  placeholder="Nombre"  />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="descripcion" class="control-label"></label>
+                <input asp-for="descripcion" class="form-control inputs"  placeholder="Descripción" />
+                <span asp-validation-for="descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="probabilidad" class="control-label"></label>
+                <input asp-for="probabilidad" class="form-control inputs"  placeholder="Probabilidad" />
+                <span asp-validation-for="probabilidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="impacto" class="control-label"></label>
+                <input asp-for="impacto" class="form-control inputs"   placeholder="Impacto"/>
+                <span asp-validation-for="impacto" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="fecha" class="control-label"></label>
+                <input asp-for="fecha" class="form-control inputs"  placeholder="Fecha" />
+                <span asp-validation-for="fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estado" class="control-label"></label>
+                <input asp-for="estado" class="form-control inputs" placeholder="Estado" />
                 <span asp-validation-for="estado" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="observaciones" class="control-label"></label>
-                <input asp-for="observaciones" class="form-control" />
+                <input asp-for="observaciones" class="form-control inputs" placeholder="Observaciones" />
                 <span asp-validation-for="observaciones" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+</body>
+</html>
 
 
 @section Scripts {

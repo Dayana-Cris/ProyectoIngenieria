@@ -261,5 +261,17 @@ Consultar Tablas*/
     }
 }
 
+/*inputs añadir riesgos */
+
+.inputs{
+    border-radius:10px;
+    background-color:lightgray;
+}
+.inputs::placeholder{
+    font-weight:bold;
+}
+
+
+
   
 

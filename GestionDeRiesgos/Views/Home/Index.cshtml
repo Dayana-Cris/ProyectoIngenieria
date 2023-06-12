@@ -9,9 +9,29 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GestionDeRiesgos.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+    <style>
+     body {
+            position: relative;
+             min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .background-svg {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: -1;
+        }
+    </style>
 
 </head>
-<body>
+<body >
+        <svg class="background-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#41ADE7" fill-opacity="0.6" d="M0,32L60,80C120,128,240,224,360,240C480,256,600,192,720,138.7C840,85,960,43,1080,42.7C1200,43,1320,85,1380,106.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+    </svg>
    <div class="container">
     <div class="row">
             <div class="col-xl-5 col-sm-12 col-md-4 d-flex align-items-center justify-content-center">
@@ -21,7 +41,7 @@
                   <div class="linea-vertical "></div>
             </div>
             <div class="col-xl-6 col-sm-12  col-md-4">
-                  <img class="img-fluid"  src="~/img/SGRUInicio.png" />
+                  <img class="img-fluid"  src="~/img/SGRU-1.png" />
             </div>
 
     </div>

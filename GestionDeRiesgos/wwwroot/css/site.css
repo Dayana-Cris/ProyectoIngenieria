@@ -242,10 +242,10 @@ Consultar Tablas*/
         position: absolute;
         top: 0;
         right: 0;
-        height: 20px; /* Altura de la línea vertical  */
+        height: 80%; /* Altura de la línea vertical  */
         width: 4px; 
         background-color: #41ADE7;
-        margin-top: 0%; /* Posición vertical de la línea vertical */
+        margin-top: 3%; /* Posición vertical de la línea vertical */
         
         border-radius:5px;
     }
@@ -263,13 +263,99 @@ Consultar Tablas*/
 
 /*inputs añadir riesgos */
 
-.inputs{
-    border-radius:10px;
-    background-color:lightgray;
+.inputs {
+    border-radius: 20px;
+    background-color: lightgray;
+    font-size: 20px;
+   
+    margin-right:20px;
+    margin-bottom:30px;
 }
 .inputs::placeholder{
     font-weight:bold;
+    font-size:20px;
+    
 }
+.inputs:active{
+    color:white;
+    font-weight:bold;
+}
+    .inputs:focus {
+        
+        font-weight: bold;
+        background-color: lightgray;
+    }
+
+.btnGuardar {
+    --color: #53ac59;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+}
+
+    .btnGuardar::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: var(--color);
+        height: 150px;
+        width: 200px;
+        border-radius: 50%;
+        color: white;
+    }
+
+.btnGuardar::after {
+    color: black;
+}
+
+.btnGuardar:hover {
+    color: #fff;
+}
+
+.btnGuardar:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+
+.btnGuardar:hover:before {
+    top: -30px;
+    left: -30px;
+}
+
+.btnGuardar:active:before {
+    background: #41ADE7;
+    transition: background 0s;
+}
+.tituloPanel {
+    font-size: 40px;
+    font-weight: bold;
+    color: #41ADE7;
+    margin-bottom:20px;
+}
+
+
+.inputsEliminar {
+    background-color: #edeaea;
+    border-radius: 20px;
+    font-size:20px;
+}
+.tituloEliminar{
+    color:#f56e6e
+}
+
+
 
 
 

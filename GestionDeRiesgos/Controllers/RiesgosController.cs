@@ -85,7 +85,16 @@ namespace GestionDeRiesgos.Controllers
                 //Se busca el codigo de riesgo que entro con el riesgo dentro de la lista de abreviaciones
                 var newListA = listaAbrev.Where(x => x.abreviacion == riesgos.codigoRiesgo);
                 //Trae la categoria del primer elemeneto de la abreviacion que coincida
-                riesgos.categoria = newListA.First().categoria;
+                if (newListA.Any())
+                {
+                    riesgos.categoria = newListA.First().categoria;
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "La lista de categorías está vacía.";
+                    // Redireccionar a otra acción o vista donde se mostrará el mensaje
+                    //return RedirectToAction("Index", "Home");
+                }
                 //Si esta lista no esta vacia quiere decir que la abreviacion si exsite en el sistema
                 if (newListA.Count()>0)
                 {

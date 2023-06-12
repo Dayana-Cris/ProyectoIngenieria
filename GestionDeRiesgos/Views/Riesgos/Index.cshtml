@@ -19,7 +19,7 @@
 
 
 
-<h1>Consultar Riesgo</h1>
+<h1 class="tituloPanel">Consultar Riesgo</h1>
     @if (TempData["MensajeLista"] != null)
     {
         //Si tiene datos mostramos el alert en caso de que falle la autenticacion
@@ -110,56 +110,56 @@
     <tbody>
 @foreach (var item in Model) {
         <tr class="solid-line  ">
-            <td class="celdasTabla " >
-                <div class=" vertical-line">
+            <td class="celdasTabla vertical-line" >
+                <div class=" ">
                      @Html.DisplayFor(modelItem => item.codigoRiesgo)
                 </div>
                     
             </td>
-            <td class="celdasTabla ">
-                 <div class=" vertical-line">
+            <td class="celdasTabla vertical-line ">
+                 <div class=" ">
                      @Html.DisplayFor(modelItem => item.nombre)
                 </div>
                
             </td >
-            <td class="celdasTabla ">
-                 <div class=" vertical-line">
+            <td class="celdasTabla  vertical-line ">
+                 <div class="">
                       @Html.DisplayFor(modelItem => item.descripcion)
                 </div>
                
             </td>
-            <td class="celdasTabla ">
-                   <div class=" vertical-line">
+            <td class="celdasTabla vertical-line ">
+                   <div class=" ">
                        @Html.DisplayFor(modelItem => item.probabilidad)
                 </div>
               
             </td>
-            <td class="celdasTabla  ">
-                <div class=" vertical-line">
+            <td class="celdasTabla  vertical-line ">
+                <div class=" ">
                        @Html.DisplayFor(modelItem => item.impacto)
                 </div>
                
             </td>
-            <td class="celdasTabla  ">
-                 <div class=" vertical-line">
+            <td class="celdasTabla  vertical-line  ">
+                 <div class="">
                 @Html.DisplayFor(modelItem => item.categoria)
                 </div>
                
             </td>
-            <td class="celdasTabla ">
-                  <div class=" vertical-line">
+            <td class="celdasTabla  vertical-line ">
+                  <div class="">
                  @Html.DisplayFor(modelItem => item.fecha)
                 </div>
                
             </td>
-            <td class="celdasTabla  ">
-                  <div class=" vertical-line">
+            <td class="celdasTabla  vertical-line  ">
+                  <div class="">
                   @Html.DisplayFor(modelItem => item.estado)
                 </div>
                
             </td>
-            <td class="celdasTabla ">
-                 <div class=" vertical-line">
+            <td class="celdasTabla  vertical-line ">
+                 <div class="">
                     @Html.DisplayFor(modelItem => item.observaciones)
                 </div>
               
@@ -167,16 +167,34 @@
             <td class="celdasTabla">
                     @if (TempData["Mensaje"] == "opcion1")
                     {
-                        @Html.ActionLink("Edit", "Edit", new { id=item.codigoRiesgo });
+                       
+                     
+                           <a style="text-decoration:none" href="@Url.Action("Edit", new { id = item.codigoRiesgo })"  > 
+                            <button class="btn btn-info text-white">Editar</button>
+                            
+                        </a>
                     }
                     @if (TempData["Mensaje"] == "opcion2")
                     {
-                        @Html.ActionLink("Delete", "Delete", new { id=item.codigoRiesgo});
+                        
+
+                         <a style="text-decoration:none" href="@Url.Action("Delete", new { id = item.codigoRiesgo })"  > 
+                            <button class="btn btn-danger text-white">Eliminar</button>
+                            
+                        </a>
 
                     }
                     @if (TempData["Mensaje"] == "opcion3" || TempData["Mensaje"] == null)
                     {
-                        @Html.ActionLink("Details", "Details", new { id=item.codigoRiesgo });
+                     
+                        <a style="text-decoration:none" href="@Url.Action("Details", new { id = item.codigoRiesgo })"  > 
+                            <button class="btn btn-secondary text-white">Detalles</button>
+                            
+                        </a>
+                      
+                     
+                               
+                              
                     }
                     
             </td>

@@ -126,7 +126,7 @@ namespace GestionDeRiesgos.Controllers
                 }
                 else
                 {
-                    TempData["MensajeCodigo"] = "No existe esa abreviacion de riesgo";
+                    TempData["MensajeCodigo"] = "No existe ningún código de riesgo con esa abreviatura";
                     return View(riesgos);
                 }
 
@@ -232,6 +232,106 @@ namespace GestionDeRiesgos.Controllers
             }
 
             return View(riesgos);
+        }
+
+
+
+
+
+
+
+
+
+        public IActionResult Abreviaciones()
+        {
+            return View(contexto.AbrevRiesgos.ToList());
+        }
+
+        public async Task<IActionResult> CreateAbrev([Bind("abreviacion,categoria")] AbrevRiesgos riesgos)
+        {
+            if (ModelState.IsValid)
+            {
+                contexto.Add(riesgos);
+                await contexto.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(riesgos);
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> EditAbrev(string? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+
+            var riesgos = await contexto.AbrevRiesgos.FindAsync(Id);
+
+            if (riesgos == null)
+            {
+                return NotFound();
+            }
+
+            return View(riesgos);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditAbrev(string Id, [Bind("abreviacion, categoria")] AbrevRiesgos riesgos)
+        {
+            if (Id != riesgos.abreviacion)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                contexto.Update(riesgos);
+
+                await contexto.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(riesgos);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteAbrev(string? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+
+            var riesgos = await contexto.AbrevRiesgos.FindAsync(Id);
+
+            if (riesgos == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return View(riesgos);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("DeleteAbrev")]
+        public async Task<IActionResult> DelAbrev(string Id)
+        {
+            var riesgos = await contexto.AbrevRiesgos.FindAsync(Id);
+
+            contexto.AbrevRiesgos.Remove(riesgos);
+
+            await contexto.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }

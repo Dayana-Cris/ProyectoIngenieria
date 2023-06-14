@@ -18,6 +18,7 @@ namespace GestionDeRiesgos.Data
 
         public DbSet<Models.Planes> Planes { get; set; }
         public DbSet<Models.AbrevRiesgos> AbrevRiesgos { get; set; }
+        public DbSet<Models.AbrevPlanes> AbrevPlanes { get; set; }
 
     }//Cierre class
 }

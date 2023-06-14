@@ -1,0 +1,80 @@
+﻿@model IEnumerable<GestionDeRiesgos.Models.AbrevPlanes>
+
+@{
+    ViewData["Title"] = "ID Planes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GestionDeRiesgos.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+
+</head>
+<body>
+
+
+    <h1 class="tituloPanel">ID Planes</h1>
+
+<p>
+    <a asp-action="CreateAbrev">Crear nuevo ID</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                    <div class="encabezadoTabla">
+
+                        @Html.DisplayNameFor(model => model.abreviacion)
+
+                    </div>
+
+            </th>
+            <th>
+                    <div class="encabezadoTabla">
+                        @Html.DisplayNameFor(model => model.categoria)
+
+                    </div>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                    <td class="celdasTabla  vertical-line ">
+                <div class=" ">
+                       @Html.DisplayFor(modelItem => item.abreviacion)
+                </div>
+               
+            </td>
+                    <td class="celdasTabla  vertical-line ">
+                        <div class=" ">
+                            @Html.DisplayFor(modelItem => item.categoria)
+                        </div>
+
+                    </td>
+            <td  class="celdasTabla">
+                 <a style="text-decoration:none" href="@Url.Action("EditAbrev", new { id = item.abreviacion })"  > 
+                    <button class="btn btn-info text-white">Editar</button>
+                            
+                </a>
+                <a style="text-decoration:none" href="@Url.Action("DeleteAbrev", new { id = item.abreviacion })"  > 
+                    <button class="btn btn-info text-white">Eliminar</button>
+                            
+                 </a>
+                    
+                    
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+</body>
+</html>

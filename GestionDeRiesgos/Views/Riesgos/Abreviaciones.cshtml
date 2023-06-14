@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GestionDeRiesgos.Models.AbrevRiesgos>
+
+@{
+    ViewData["Title"] = "Abreviaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Abreviaciones</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>|
+                <div class="encabezadoTabla">
+                    @Html.DisplayNameFor(model => model.abreviacion)
+                </div>
+            </th>
+            <th>
+                <div class="encabezadoTabla">
+                 @Html.DisplayNameFor(model => model.categoria)
+                </div>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="celdasTabla  vertical-line ">
+                @Html.DisplayFor(modelItem => item.abreviacion)
+            </td>
+            <td class="celdasTabla  vertical-line ">
+                @Html.DisplayFor(modelItem => item.categoria)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "EditAbrev", new { id=item.abreviacion}) |
+                    @Html.ActionLink("Delete", "DeleteAbrev", new {  id=item.abreviacion })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

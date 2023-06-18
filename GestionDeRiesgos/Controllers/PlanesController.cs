@@ -247,45 +247,46 @@ namespace GestionDeRiesgos.Controllers
                 return View(abrevPlanes);
             }
         }
-        [HttpGet]
-        public async Task<IActionResult> EditAbrev(string ? Id)
-        {
-            if (Id == null)
-            {
-                return NotFound();
-            }
 
-            var planes = await contexto.AbrevPlanes.FindAsync(Id);
+        //[HttpGet]
+        //public async Task<IActionResult> EditAbrev(string ? Id)
+        //{
+        //    if (Id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (planes == null)
-            {
-                return NotFound();
-            }
+        //    var planes = await contexto.AbrevPlanes.FindAsync(Id);
 
-            return View(planes);
-        }
+        //    if (planes == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditAbrev(string Id, [Bind("abreviacion, categoria")] AbrevPlanes planes)
-        {
-            if (Id != planes.abreviacion)
-            {
-                return NotFound();
-            }
-            if (ModelState.IsValid)
-            {
-                contexto.Update(planes);
+        //    return View(planes);
+        //}
 
-                await contexto.SaveChangesAsync();
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> EditAbrev(string Id, [Bind("abreviacion, categoria")] AbrevPlanes planes)
+        //{
+        //    if (Id != planes.abreviacion)
+        //    {
+        //        return NotFound();
+        //    }
+        //    if (ModelState.IsValid)
+        //    {
+        //        contexto.Update(planes);
 
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(planes);
-            }
-        }
+        //        await contexto.SaveChangesAsync();
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        return View(planes);
+        //    }
+        //}
 
         [HttpGet]
         public async Task<IActionResult> DeleteAbrev(string? Id)
@@ -314,11 +315,27 @@ namespace GestionDeRiesgos.Controllers
         {
             var planes = await contexto.AbrevPlanes.FindAsync(Id);
 
-            contexto.AbrevPlanes.Remove(planes);
 
-            await contexto.SaveChangesAsync();
+            var ListaP = contexto.Planes.ToList();
+            //Lista de riesgos que coincidan con la abreviacion
+            var NewList = ListaP.Where(x => x.idPlan.StartsWith(Id));
 
-            return RedirectToAction("Index");
+            if (NewList.Any())
+            {
+                TempData["MensajeDelete"] = "El codigo del riesgo no se puede eliminar por que ya existen riesgos asociados a este";
+                return View(planes);
+            }
+            else
+            {
+                contexto.AbrevPlanes.Remove(planes);
+
+                await contexto.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+
+
+            
         }
     }
 }

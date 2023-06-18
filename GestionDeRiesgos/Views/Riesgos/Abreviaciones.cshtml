@@ -8,7 +8,7 @@
 <h1>Abreviaciones</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateAbrev">Crear nuevo ID Riesgo</a>
 </p>
 <table class="table">
     <thead>
@@ -36,7 +36,7 @@
                 @Html.DisplayFor(modelItem => item.categoria)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "EditAbrev", new { id=item.abreviacion}) |
+                    @*Html.ActionLink("Edit", "EditAbrev", new { id=item.abreviacion})*@
                     @Html.ActionLink("Delete", "DeleteAbrev", new {  id=item.abreviacion })
             </td>
         </tr>

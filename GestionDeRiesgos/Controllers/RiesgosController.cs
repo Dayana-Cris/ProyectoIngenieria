@@ -16,9 +16,9 @@ namespace GestionDeRiesgos.Controllers
         }
         //Es el primer metodo que se ejecuta en el controlador
         public IActionResult Index(int id, string buscar, string idBusqueda, string nombreBusqueda,
-            string probabilidad,  string restaurar)
+            string probabilidad, string restaurar)
         {
-            if(id == 1)
+            if (id == 1)
             {
                 TempData["Mensaje"] = "opcion1";
             }
@@ -26,7 +26,7 @@ namespace GestionDeRiesgos.Controllers
             {
                 TempData["Mensaje"] = "opcion2";
             }
-            if(id == 3)
+            if (id == 3)
             {
                 TempData["Mensaje"] = "opcion3";
             }
@@ -76,7 +76,7 @@ namespace GestionDeRiesgos.Controllers
             "fecha, estado, observaciones")] Riesgos  riesgos)
         {
             riesgos.categoria = "Vacio";
-            if (riesgos.codigoRiesgo != null && riesgos.nombre != null && riesgos.descripcion != null && 
+            if (riesgos.codigoRiesgo != null && riesgos.nombre != null && riesgos.descripcion != null &&
                 riesgos.probabilidad != null && riesgos.impacto != null && riesgos.fecha != null &&
                 riesgos.estado != null && riesgos.observaciones != null)
             {
@@ -96,7 +96,7 @@ namespace GestionDeRiesgos.Controllers
                     //return RedirectToAction("Index", "Home");
                 }
                 //Si esta lista no esta vacia quiere decir que la abreviacion si exsite en el sistema
-                if (newListA.Count()>0)
+                if (newListA.Count() > 0)
                 {
                     //Lista completa de riesgos
                     var ListaP = contexto.Riesgos.ToList();
@@ -104,15 +104,15 @@ namespace GestionDeRiesgos.Controllers
                     var NewList = ListaP.Where(x => x.codigoRiesgo.StartsWith(riesgos.codigoRiesgo));
                     //Se devulve esta lista
                     ListaP = NewList.ToList();
-                    if(ListaP.Count()>0)
+                    if (ListaP.Count() > 0)
                     {
                         //Debo sacar el numero del ultimo codigo registrado
                         string[] codigo = ListaP.Last().codigoRiesgo.Split(" ");
                         //Pero como sale en string lo debo
                         //Convertie en numero, para poder sumarle uno despues
-                        var numero = Convert.ToInt32( codigo[1] );
+                        var numero = Convert.ToInt32(codigo[1]);
                         //Ahora que ya tengo el numero lo asigno al codigo
-                        riesgos.codigoRiesgo = riesgos.codigoRiesgo +" "+ (numero + 1);
+                        riesgos.codigoRiesgo = riesgos.codigoRiesgo + " " + (numero + 1);
 
                     }
                     else
@@ -260,45 +260,45 @@ namespace GestionDeRiesgos.Controllers
                 return View(riesgos);
             }
         }
-        [HttpGet]
-        public async Task<IActionResult> EditAbrev(string? Id)
-        {
-            if (Id == null)
-            {
-                return NotFound();
-            }
+        //[HttpGet]
+        //public async Task<IActionResult> EditAbrev(string? Id)
+        //{
+        //    if (Id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var riesgos = await contexto.AbrevRiesgos.FindAsync(Id);
+        //    var riesgos = await contexto.AbrevRiesgos.FindAsync(Id);
 
-            if (riesgos == null)
-            {
-                return NotFound();
-            }
+        //    if (riesgos == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(riesgos);
-        }
+        //    return View(riesgos);
+        //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditAbrev(string Id, [Bind("abreviacion, categoria")] AbrevRiesgos riesgos)
-        {
-            if (Id != riesgos.abreviacion)
-            {
-                return NotFound();
-            }
-            if (ModelState.IsValid)
-            {
-                contexto.Update(riesgos);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> EditAbrev(string Id, [Bind("abreviacion, categoria")] AbrevRiesgos riesgos)
+        //{
+        //    if (Id != riesgos.abreviacion)
+        //    {
+        //        return NotFound();
+        //    }
+        //    if (ModelState.IsValid)
+        //    {
+        //        contexto.Update(riesgos);
 
-                await contexto.SaveChangesAsync();
+        //        await contexto.SaveChangesAsync();
 
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(riesgos);
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        return View(riesgos);
+        //    }
+        //}
 
         [HttpGet]
         public async Task<IActionResult> DeleteAbrev(string? Id)
@@ -327,11 +327,23 @@ namespace GestionDeRiesgos.Controllers
         {
             var riesgos = await contexto.AbrevRiesgos.FindAsync(Id);
 
-            contexto.AbrevRiesgos.Remove(riesgos);
+            var ListaP = contexto.Riesgos.ToList();
+            //Lista de riesgos que coincidan con la abreviacion
+            var NewList = ListaP.Where(x => x.codigoRiesgo.StartsWith(Id));
 
-            await contexto.SaveChangesAsync();
+            if (NewList.Any())
+            {
+                TempData["MensajeDelete"] = "El codigo del riesgo no se puede eliminar por que ya existen riesgos asociados a este";
+                return View(riesgos);
+            }
+            else{
+                contexto.AbrevRiesgos.Remove(riesgos);
 
-            return RedirectToAction("Index");
+                await contexto.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+            
         }
     }
 }

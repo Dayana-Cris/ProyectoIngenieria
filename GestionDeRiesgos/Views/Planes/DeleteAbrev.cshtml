@@ -48,7 +48,16 @@
     </svg>
 
     <h1 class="tituloPanel">Eliminar ID Plan</h1>
-
+    @if (TempData["MensajeDelete"] != null)
+    {
+        //Si tiene datos mostramos el alert en caso de que falle la autenticacion
+        <div class="alert alert-warning" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
+            <stromg>
+                @TempData["MensajeDelete"]
+            </stromg>
+        </div>
+    }
 <div>
     <h4>AbrevPlanes</h4>
     <hr />

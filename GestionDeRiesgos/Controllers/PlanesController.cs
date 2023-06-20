@@ -117,6 +117,9 @@ namespace GestionDeRiesgos.Controllers
                     {
                         planes.idPlan = planes.idPlan + " " + 1;
                     }
+                    //Mensaje confirmacion
+                    TempData["MensajeConfirmacion"] = "El plan " + planes.idPlan + " se añadió  correctamente";
+
                     contexto.Add(planes);
                     await contexto.SaveChangesAsync();
                     return RedirectToAction("Index");
@@ -164,6 +167,9 @@ namespace GestionDeRiesgos.Controllers
             }
             if (ModelState.IsValid)
             {
+                TempData["MensajeConfirmacion"] = "El plan " + planes.idPlan + " se modifico  correctamente";
+
+
                 contexto.Update(planes);
 
                 await contexto.SaveChangesAsync();
@@ -203,6 +209,9 @@ namespace GestionDeRiesgos.Controllers
         public async Task<IActionResult> EliminarPlan(string Id)
         {
             var planes = await contexto.Planes.FindAsync(Id);
+
+            TempData["MensajeConfirmacionDelete"] = "El plan " + planes.idPlan + " se eliminó  correctamente";
+
 
             contexto.Planes.Remove(planes);
 

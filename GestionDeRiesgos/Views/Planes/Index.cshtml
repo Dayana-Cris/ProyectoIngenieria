@@ -31,6 +31,26 @@
         </stromg>
     </div>
 }
+    @if (TempData["MensajeConfirmacion"] != null)
+    {
+        //Si tiene datos mostramos el alert en caso de que falle la autenticacion
+        <div class="alert alert-primary" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
+            <stromg>
+                @TempData["MensajeConfirmacion"]
+            </stromg>
+        </div>
+    }
+    @if (TempData["MensajeConfirmacionDelete"] != null)
+    {
+        //Si tiene datos mostramos el alert en caso de que falle la autenticacion
+        <div class="alert alert-warning" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
+            <stromg>
+                @TempData["MensajeConfirmacionDelete"]
+            </stromg>
+        </div>
+    }
 
 
 

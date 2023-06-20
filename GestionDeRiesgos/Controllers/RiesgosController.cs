@@ -122,6 +122,9 @@ namespace GestionDeRiesgos.Controllers
 
                     contexto.Add(riesgos);
                     await contexto.SaveChangesAsync();
+
+                    TempData["MensajeConfirmacion"] = "El riesgo " + riesgos.codigoRiesgo + " se añadió  correctamente";
+
                     return RedirectToAction("Index");
                 }
                 else
@@ -169,7 +172,13 @@ namespace GestionDeRiesgos.Controllers
             }
             if (ModelState.IsValid)
             {
+
+                TempData["MensajeConfirmacion"] = "El riesgo " + riesgos.codigoRiesgo + " se modifico  correctamente";
+
                 contexto.Update(riesgos);
+
+                
+
 
                 await contexto.SaveChangesAsync();
 
@@ -208,6 +217,8 @@ namespace GestionDeRiesgos.Controllers
         public async Task<IActionResult> EliminarRiesgo(string Id)
         {
             var riesgos = await contexto.Riesgos.FindAsync(Id);
+
+            TempData["MensajeConfirmacionDelete"] = "El riesgo " + riesgos.codigoRiesgo + " se eliminó  correctamente";
 
             contexto.Riesgos.Remove(riesgos);
 

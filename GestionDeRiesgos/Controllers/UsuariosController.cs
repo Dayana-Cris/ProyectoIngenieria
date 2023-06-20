@@ -9,6 +9,7 @@ using System.Security.Claims;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Numerics;
 
 namespace GestionDeRiesgos.Controllers
 {
@@ -82,6 +83,9 @@ namespace GestionDeRiesgos.Controllers
             {
                 if (claveSegura(usuarios.password))
                 {
+
+                    TempData["MensajeConfirmacion"] = "El usuario " + usuarios.correo + " se añadió  correctamente";
+
                     contexto.Add(usuarios);
                     await contexto.SaveChangesAsync();
                     return RedirectToAction("Index");
@@ -131,6 +135,9 @@ namespace GestionDeRiesgos.Controllers
             }
             if (ModelState.IsValid)
             {
+                TempData["MensajeConfirmacion"] = "El usuario " + usuario.idUsuario + " se modificó  correctamente";
+
+
                 contexto.Update(usuario);
 
                 await contexto.SaveChangesAsync();
@@ -169,6 +176,9 @@ namespace GestionDeRiesgos.Controllers
         public async Task<IActionResult> Delete(int Id)
         {
             var usuario = await contexto.Usuarios.FindAsync(Id);
+
+            TempData["MensajeConfirmacionDelete"] = "El usuario " + usuario.idUsuario + " se eliminó  correctamente";
+
 
             contexto.Usuarios.Remove(usuario);
 

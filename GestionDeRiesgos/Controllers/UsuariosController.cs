@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Numerics;
+using System.Collections.Generic;
 
 namespace GestionDeRiesgos.Controllers
 {
@@ -83,12 +84,21 @@ namespace GestionDeRiesgos.Controllers
             {
                 if (claveSegura(usuarios.password))
                 {
-
-                    TempData["MensajeConfirmacion"] = "El usuario " + usuarios.correo + " se añadió  correctamente";
-
-                    contexto.Add(usuarios);
-                    await contexto.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                    var ListaP = contexto.Usuarios.ToList();
+                    var NewList = ListaP.Where(x => x.correo == usuarios.correo);
+                    if (NewList.Any())
+                    {
+                        TempData["MensajeError"] = "El correo ingresado ya se encuentra asociado a otro usuario del sistema, por favor ingrese otro";
+                        return View(usuarios);
+                    }
+                    else
+                    {
+                        TempData["MensajeConfirmacion"] = "El usuario " + usuarios.correo + " se añadió  correctamente";
+                        contexto.Add(usuarios);
+                        await contexto.SaveChangesAsync();
+                        return RedirectToAction("Index");
+                    }
+                    
                 }
                 else
                 {

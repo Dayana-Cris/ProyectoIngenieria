@@ -85,11 +85,27 @@
             
              <div class="row ">
                 <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="form-group">
+                    <div class="row">
+
+                    
+                    <div class="form-group  col-8">
                    
                     <input asp-for="codigoRiesgo" class="form-control inputs" placeholder="Código de riesgo" />
                     <span asp-validation-for="codigoRiesgo" class="text-danger"></span>
-                </div>
+                     </div>
+                     <div class="col-4 ">
+                                   <div class=" justify-content-end d-flex  align-content-end">
+                                        <div class="form-group">
+                                    <button class="btnCodigoRiesgos" onclick="location.href='@Url.Action("Abreviaciones", "Riesgos")';return false;">Códigos Riesgos</button>
+
+                                     </div>
+                                 </div>
+                     </div>
+
+
+                     </div>
+                     
+                
             <div class="form-group">
                
                 <input asp-for="nombre" class="form-control inputs"  placeholder="Nombre"  />
@@ -120,13 +136,9 @@
             </div>
             <div class="form-group">
                 
-               @*
-                            <input asp-for="estado" class="form-control inputs" placeholder="Estado" />
-                            <span asp-validation-for="estado" class="text-danger"></span>
-
-               *@ 
+          
                             <label>Estado</label>
-                            <select name="estado" id="estado">
+                            <select class="form-select inputs" name="estado" id="estado">
                                 <option value="A">Activo</option>
                                 <option value="I">Inactivo</option>
                             </select>
@@ -147,12 +159,7 @@
                 <button type="submit" value="Create" class="btnGuardar">Agregar</button> 
                 </div>
             </div>
-              <div class=" justify-content-end d-flex  align-content-end">
-                        <div class="form-group">
-                            <button onclick="location.href='@Url.Action("Abreviaciones", "Riesgos")';return false;">Códigos Riesgos</button>
-
-                        </div>
-                    </div>
+              
         </div>
        
          

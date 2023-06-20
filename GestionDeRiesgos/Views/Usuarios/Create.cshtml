@@ -5,13 +5,122 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Añadir Usuario</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -Create</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GestionDeRiesgos.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
 
-<h4>Usuarios</h4>
-<hr />
+  
+
+  <style>
+     body {
+            position: relative;
+             min-height: 10vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .background-svg {
+            position: absolute;
+            bottom: -140px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: -2;
+        }
+    </style>
+
+</head>
+
+<body>
+     <svg  class="background-svg" 
+    id="visual" viewBox="0 0 900 600"
+    width="900" 
+    height="600"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    version="1.1">
+        <path d="M0 403L21.5 396C43 389 86 375 128.8 370C171.7 365 214.3 369 257.2 377.7C300 386.3 343 399.7 385.8 403.3C428.7 407 471.3 401 514.2 407.8C557 414.7 600 434.3 642.8 438.7C685.7 443 728.3 432 771.2 420.7C814 409.3 857 397.7 878.5 391.8L900 386L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z" fill="#86c7ed"></path><path d="M0 427L21.5 430C43 433 86 439 128.8 452.2C171.7 465.3 214.3 485.7 257.2 495C300 504.3 343 502.7 385.8 494.7C428.7 486.7 471.3 472.3 514.2 461.8C557 451.3 600 444.7 642.8 443.5C685.7 442.3 728.3 446.7 771.2 449C814 451.3 857 451.7 878.5 451.8L900 452L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z" fill="#41ade7"></path><path d="M0 560L21.5 558C43 556 86 552 128.8 546.7C171.7 541.3 214.3 534.7 257.2 525.5C300 516.3 343 504.7 385.8 504C428.7 503.3 471.3 513.7 514.2 514.8C557 516 600 508 642.8 510.7C685.7 513.3 728.3 526.7 771.2 531.7C814 536.7 857 533.3 878.5 531.7L900 530L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z" fill="#2d80ac"></path>
+</svg>
+
+<h1 class="tituloPanel">Añadir Usuario</h1>
+
+
+<div class="row">
+    <div class="col-12">
+
+        @*Se revisa si existe un mensaje de error*@
+        @if (TempData["MensajeError"] != null)
+        {
+            //se muestra el mensaje de error
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                <strong>@TempData["MensajeError"]</strong>
+            </div>
+
+        }
+
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+             <div class="row ">
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="form-group">
+           
+
+
+                    <input asp-for="nombre" class="form-control inputs" placeholder="Nombre" />
+                    <span asp-validation-for="nombre" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+               
+
+                <input asp-for="correo" class="form-control inputs"  placeholder="Correo Electrónico"  />
+                <span asp-validation-for="correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+             
+               
+                <input type="password" asp-for="password" class="form-control inputs"  placeholder="Contraseña" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+     
+            </div>
+        
+       
+        </div>
+        <div class="row">
+            <div class=" justify-content-end d-flex  align-content-end">
+
+          
+
+              <div class="form-group">
+                <button type="submit" value="Guardar" class="btnGuardar">Agregar</button> 
+                </div>
+              
+            </div>
+      
+        </div>
+       
+         
+        </form>
+    </div>
+</div>
+
+
+
+@*
 <div class="row">
     <div class="col-md-4">
-        @*Se revisa si existe un mensaje de error*@
+        
         @if (TempData["MensajeError"] != null)
         {
             //se muestra el mensaje de error
@@ -45,7 +154,10 @@
         </form>
     </div>
 </div>
+*@
 
+</body>
+</html>
 
 
 @section Scripts {

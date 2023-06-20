@@ -3,17 +3,46 @@
     ViewData["Title"] = "Restablecer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -Create</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GestionDeRiesgos.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
 
-<h1>Restablecer</h1>
-@*formulario para restablecer la contraseña*@
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-        </div>
+  
 
-        @*formulario*@
-        <div class="col-md-4">
-            @*Se revisa si existe un mensaje de error*@
+  <style>
+     body {
+            position: relative;
+             min-height: 10vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .background-svg {
+            position: absolute;
+            bottom: -140px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: -2;
+        }
+    </style>
+
+</head>
+
+<body>
+     <svg class="background-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#41ADE7" fill-opacity="0.9" d="M0,32L60,80C120,128,240,224,360,240C480,256,600,192,720,138.7C840,85,960,43,1080,42.7C1200,43,1320,85,1380,106.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+    </svg>
+
+<h1 class="tituloPanel">Restablecer</h1>
+ 
             @if (TempData["MensajeError"] != null)
             {
                 //se muestra el mensaje de error
@@ -23,42 +52,47 @@
                 </div>
 
             }
+<div class="row">
 
-            <form asp-action="Restablecer" method="post" id="FormularioRestablecer">
-                @*mostrar los error para las validaciones en las entradas de datos*@
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-12">
 
-                @*solicitud del password*@
+   
+
+
+         <form asp-action="Restablecer" method="post" id="FormularioRestablecer">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+             <div class="row ">
+                <div class="col-xl-4 col-md-6 col-sm-12">
                 <div class="mb-3">
                     <label asp-for="Password" class="form-label">Contraseña actual</label>
-                    <input type="password" asp-for="Password" class="form-control" />
+                    <input type="password" asp-for="Password" class="form-control inputs" placeholder="Contraseña actual" />
                 </div>
-
-                @*Solicitud del nuevo password*@
-                <div class="mb-3">
+               <div class="mb-3">
                     <label asp-for="NewPassword" class="form-label">Nueva contraseña</label>
-                    <input type="password" asp-for="NewPassword" class="form-control" />
+                    <input type="password" asp-for="NewPassword" class="form-control inputs" placeholder="Nueva contraseña" />
                 </div>
-
-                @*Solicitud de confirmar new password*@
-                <div class="mb-3">
+          <div class="mb-3">
                     <label asp-for="ConfirmarPassword" class="form-label">Confirma nueva contraseña</label>
-                    <input type="password" asp-for="ConfirmarPassword" class="form-control" />
+                    <input type="password" asp-for="ConfirmarPassword" class="form-control inputs" placeholder="Confirmar Contraseña" />
                 </div>
-
-                @*botón para ejecutar el action*@
-                <div class="mb-3">
+               <div class="mb-3">
                     <input type="submit" value="aceptar" class="btn btn-primary" />
                 </div>
-
-            </form>
+       
+        
+            </div>
+          
 
         </div>
-
-        <div class="col-md-4">
-        </div>
+   
+       
+         
+        </form>
     </div>
 </div>
+</body>
+</html>
 
 
 

@@ -4,8 +4,20 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -Index</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GestionDeRiesgos.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
 
-<h1>Consultar Usuario</h1>
+</head>
+<body>
+<h1 class="tituloPanel">Consultar Usuario</h1>
 @if (TempData["MensajeLista"] != null)
 {
     //Si tiene datos mostramos el alert en caso de que falle la autenticacion
@@ -16,67 +28,111 @@
         </stromg>
     </div>
 }
-<form asp-controller="Usuarios" asp-action="Index">
-    <p>
-        Buscar: <input type="text" name="buscar" class="form-text" />
-        <input asp-controller="Usuarios" asp-action="Index" asp-route-idBusqueda="id" type="submit" value="Id" class="btn btn-sm btn-dark" />
-        <input asp-controller="Usuarios" asp-action="Index" asp-route-nombreBusqueda="nombre" type="submit" value="Nombre" class="btn btn-sm btn-dark" />
-        <input asp-controller="Usuarios" asp-action="Index" asp-route-restaurar="restaurar" type="submit" value="Restaurar" class="btn btn-sm btn-dark" />
 
-    </p>
+
+
+<form asp-controller="Planes" asp-action="Index">
+    <div>
+       
+         <input type="text" style="border:none" name="buscar" class="input-buscar input-color" autocomplete="off" placeholder="Buscar" />
+        <button asp-controller="Usuarios" asp-action="Index" asp-route-idBusqueda="id" type="submit" value="Id" class=" btnFiltros"> Id</button>
+        <button asp-controller="Usuarios" asp-action="Index" asp-route-nombreBusqueda="nombre" type="submit" value="Nombre" class=" btnFiltros"> Nombre </button>
+        <button asp-controller="Usuarios" asp-action="Index" asp-route-restaurar="restaurar" type="submit" value="Restaurar" class=" btnFiltros"> Restaurar</button>
+
+    </div>
 </form>
+
+
+<div class="table-responsive">
+
+
 <table class="table">
     <thead>
-        <tr>
+        <tr class="solid-line">
             <th>
-                @Html.DisplayNameFor(model => model.idUsuario)
+                <div class="encabezadoTabla encabezado-tabla" style="font-size:13px" >
+                     @Html.DisplayNameFor(model => model.idUsuario)
+                </div>
+               
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.nombre)
+                 <div class="encabezadoTabla">
+                           @Html.DisplayNameFor(model => model.nombre)
+                </div>
+              
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.correo)
+                 <div class="encabezadoTabla">
+                      @Html.DisplayNameFor(model => model.correo)   
+                </div>
+                
             </th>
-            
+           
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.idUsuario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.correo)
-                </td>
+@foreach (var item in Model) {
+        <tr class="solid-line  ">
+            <td class="celdasTabla vertical-line" >
+                <div class=" ">
+                     @Html.DisplayFor(modelItem => item.idUsuario)
+                </div>
+                    
+            </td>
+            <td class="celdasTabla vertical-line ">
+                 <div class=" ">
+                     @Html.DisplayFor(modelItem => item.nombre)
+                </div>
                
-                <td>
+            </td >
+            <td class="celdasTabla  vertical-line ">
+                 <div class="">
+                      @Html.DisplayFor(modelItem => item.correo)
+                </div>
+               
+            </td>
+          
+            <td class="celdasTabla">
                     @if (TempData["Mensaje"] == "opcion1")
                     {
-                        @Html.ActionLink("Editar nombre", "Edit", new { id=item.idUsuario })
-                        ;
-
-
-
+                       
+                     
+                           <a style="text-decoration:none" href="@Url.Action("Edit", new { id = item.idUsuario })"  > 
+                            <button class="btn btn-info text-white">Editar</button>
+                            
+                        </a>
                     }
                     @if (TempData["Mensaje"] == "opcion2")
                     {
-                        @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario})
-                        ;
+                        
+
+                         <a style="text-decoration:none" href="@Url.Action("Delete", new { id = item.idUsuario })"  > 
+                            <button class="btn btn-danger text-white">Eliminar</button>
+                            
+                        </a>
 
                     }
                     @if (TempData["Mensaje"] == "opcion3" || TempData["Mensaje"] == null)
-                        {
-                        @Html.ActionLink("Details", "Details", new { id=item.idUsuario })
-                        ;
+                    {
+                     
+                        <a style="text-decoration:none" href="@Url.Action("Details", new { id = item.idUsuario })"  > 
+                            <button class="btn btn-secondary text-white">Detalles</button>
+                            
+                        </a>
+                      
+                     
+                               
+                              
                     }
-                </td>
-            </tr>
-        }
+                    
+            </td>
+        </tr>
+}
     </tbody>
 </table>
+</div>
+
+</body>
+</html>

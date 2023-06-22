@@ -331,7 +331,7 @@ namespace GestionDeRiesgos.Controllers
 
             if (NewList.Any())
             {
-                TempData["MensajeDelete"] = "El codigo del riesgo no se puede eliminar por que ya existen riesgos asociados a este";
+                TempData["MensajeDelete"] = "La abreviatura del plan no se puede eliminar porque ya existen planes asociados a este";
                 return View(planes);
             }
             else

@@ -80,6 +80,9 @@ namespace GestionDeRiesgos.Controllers
                 riesgos.probabilidad != null && riesgos.impacto != null && riesgos.fecha != null &&
                 riesgos.estado != null && riesgos.observaciones != null)
             {
+                
+                riesgos.codigoRiesgo = riesgos.codigoRiesgo.Trim();
+                
                 //Toda la lista de abreviaciones
                 var listaAbrev = contexto.AbrevRiesgos.ToList();
                 //Se busca el codigo de riesgo que entro con el riesgo dentro de la lista de abreviaciones
@@ -258,6 +261,13 @@ namespace GestionDeRiesgos.Controllers
             return View(contexto.AbrevRiesgos.ToList());
         }
 
+        [HttpGet]
+        public IActionResult CreateAbrev()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateAbrev([Bind("abreviacion,categoria")] AbrevRiesgos riesgos)
         {
             if (ModelState.IsValid)

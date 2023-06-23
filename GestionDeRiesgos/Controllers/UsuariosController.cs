@@ -78,7 +78,7 @@ namespace GestionDeRiesgos.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idUsuario, nombre, correo, password")] Usuarios usuarios)
+        public async Task<IActionResult> Create([Bind("idUsuario, nombre, correo, password, rol")] Usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
@@ -135,7 +135,7 @@ namespace GestionDeRiesgos.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int Id, [Bind("idUsuario, nombre, correo, password")] Usuarios usuario)
+        public async Task<IActionResult> Edit(int Id, [Bind("idUsuario, nombre, correo, password, rol")] Usuarios usuario)
         {
             usuario.password = pass;
 
@@ -238,7 +238,8 @@ namespace GestionDeRiesgos.Controllers
                 //De ser verdadero, se crea identidad del usuario
                 var userClaims = new List<Claim>()
                     {
-                        new Claim(ClaimTypes.Name, temp.correo)
+                        new Claim (ClaimTypes.Name, temp.correo),
+                        new Claim(ClaimTypes.Role, temp.rol)
                     };
 
                 //permite la autenticación basada en notificaciones donde define la identidad del usuario

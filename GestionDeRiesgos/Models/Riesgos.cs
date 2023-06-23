@@ -31,7 +31,7 @@ namespace GestionDeRiesgos.Models
         [Display(Name = "Impacto")]
         public int impacto { get; set; }
 
-        
+        [Display(Name = "Categoría")]
         public string categoria { get; set; }
 
         [Required(ErrorMessage = "Es necesario ingresar la fecha cuando se crea el riesgo")]

@@ -18,12 +18,15 @@
 </head>
 <body>
 
+    <h1 class="text-center">Lista de ID para planes</h1>
 
-    <h1 class="tituloPanel">ID Planes</h1>
+    <button class="btnGuardar">
 
-<p>
-    <a asp-action="CreateAbrev">Crear nuevo ID</a>
-</p>
+
+        <a style="font-size:15px;text-decoration:none;color:green" asp-action="CreateAbrev">Añadir ID Planes</a>
+
+
+    </button>
 <table class="table">
     <thead>
         <tr>
@@ -41,6 +44,11 @@
 
                     </div>
             </th>
+                <th>
+                    <div class="encabezadoTabla">
+                        Acciones
+                    </div>
+                </th>
             <th></th>
         </tr>
     </thead>

@@ -115,13 +115,20 @@
                             <span asp-validation-for="nombre" class="text-danger"></span>
                         </div>
                         <div class="form-group">
+                            @*
+                            <input asp-for="estado" class="form-control inputs" placeholder="Estado" />
+                            <span asp-validation-for="estado" class="text-danger"></span>
 
-                            <input asp-for="tipo" class="form-control inputs" placeholder="Tipo" />
-                            <span asp-validation-for="tipo" class="text-danger"></span>
+                            *@
+                            <label>Tipo de plan</label>
+                            <select class=" form-select inputs" name="tipo" id="tipo">
+                                <option value="Continuidad">Continuidad</option>
+                                <option value="Contingencia">Contingencia</option>
+                            </select>
                         </div>
                         <div class="form-group">
+                            <textarea asp-for="descripcion" rows="3" cols="20" class="form-control inputs" placeholder="Descripción"></textarea>
 
-                            <input asp-for="descripcion" class="form-control inputs" placeholder="Descripción" />
                             <span asp-validation-for="descripcion" class="text-danger"></span>
                         </div>
                     </div>
@@ -131,7 +138,7 @@
 
                     
                     <div class="form-group  col-8">
-                        
+                        @*Eliminar los espacios en blanco*@
                             <input asp-for="codigoRiesgo" class="form-control inputs" placeholder="Codigo Riesgo" />
                             <span asp-validation-for="codigoRiesgo" class="text-danger"></span>
                      </div>

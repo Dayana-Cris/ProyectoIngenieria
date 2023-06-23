@@ -83,6 +83,9 @@ namespace GestionDeRiesgos.Controllers
             if (planes.idPlan != null && planes.nombre != null && planes.tipo != null && planes.descripcion != null && planes.codigoRiesgo != null  
                 && planes.fecha != null && planes.estado != null && planes.observaciones != null )
             {
+
+                planes.idPlan = planes.idPlan.Trim();
+                planes.codigoRiesgo = planes.codigoRiesgo.Trim();
                 var listaAbrev = contexto.AbrevPlanes.ToList();
 
                 var newList = listaAbrev.Where(x => x.abreviacion == planes.idPlan);

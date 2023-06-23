@@ -39,11 +39,15 @@
 </head>
 
 <body>
-<h1>Abreviaciones</h1>
 
+    <h1 class="text-center">Lista de ID para riesgos</h1>
 
     <button class="btnGuardar" >
+
+        
          <a style="font-size:15px;text-decoration:none;color:green" asp-action="CreateAbrev">Añadir Id Riesgo</a>
+
+
     </button>
    
 
@@ -60,6 +64,11 @@
                  @Html.DisplayNameFor(model => model.categoria)
                 </div>
             </th>
+                <th>
+                    <div class="encabezadoTabla">
+                        Acciones
+                    </div>
+                </th>
            
        
     </thead>
@@ -72,11 +81,11 @@
             <td class="celdasTabla  vertical-line ">
                 @Html.DisplayFor(modelItem => item.categoria)
             </td>
-            <td>
+            <td class="celdasTabla vertical-line">
 
-                   
-                       
-                          <a href="@Url.Action("DeleteAbrev", new { id = item.abreviacion })" class="btn btn-danger">Delete</a>
+
+
+                        <a href="@Url.Action("DeleteAbrev", new { id = item.abreviacion })" class="btn btn-danger">Delete</a>
 
                       
                   

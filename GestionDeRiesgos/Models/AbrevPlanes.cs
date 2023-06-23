@@ -5,6 +5,8 @@ namespace GestionDeRiesgos.Models
     public class AbrevPlanes
     {
         [Key]
+        [Required(ErrorMessage = "Es necesario ingresar ID del riesgo")]
+        [Display(Name = "ID")]
         public string abreviacion { get; set; }
 
         [Required(ErrorMessage = "Es necesario ingresar la categoría del riesgo")]

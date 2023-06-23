@@ -242,7 +242,13 @@ namespace GestionDeRiesgos.Controllers
         {
             return View(contexto.AbrevPlanes.ToList());
         }
-
+        [HttpGet]
+        public IActionResult CreateAbrev()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateAbrev([Bind("abreviacion,categoria")] AbrevPlanes abrevPlanes)
         {
             if (ModelState.IsValid)

@@ -48,12 +48,14 @@
                     <span asp-validation-for="codigoRiesgo" class="text-danger"></span>
                 </div>
             <div class="form-group">
-               
+                            <label>Nombre</label>
+
                 <input asp-for="nombre" class="form-control inputs"  placeholder="Nombre"  />
                 <span asp-validation-for="nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-               
+                            <label>Descripcion</label>
+
                 <input asp-for="descripcion" class="form-control inputs"  placeholder="Descripción" />
                 <span asp-validation-for="descripcion" class="text-danger"></span>
             </div>
@@ -90,13 +92,16 @@
 
             </div>
               <div class="form-group">
+                            <label>Categoría</label>
+
                 <input asp-for="categoria" class="form-control inputs"  placeholder="Categoria" />
            
                 <span asp-validation-for="categoria" class="text-danger"></span>
             </div>
             
             <div class="form-group">
-               
+                            <label>Fecha</label>
+
                 <input asp-for="fecha" class="form-control inputs"  placeholder="Fecha" />
                 <span asp-validation-for="fecha" class="text-danger"></span>
             </div>
@@ -111,7 +116,8 @@
             </div>
              <div class="col-xl-4 col-md-6 col-sm-12">
                    <div class="form-group">
-               
+                            <label>Observaciones</label>
+
                 <textarea asp-for="observaciones" rows="6" cols="50"  class="form-control inputs" placeholder="Observaciones"></textarea> 
                 <span asp-validation-for="observaciones" class="text-danger"></span>
             </div>

@@ -84,6 +84,8 @@
 
                     
                     <div class="form-group  col-8">
+                                <label>ID Plan</label>
+
                          <input asp-for="idPlan" class="form-control inputs" placeholder="ID"  style="text-transform:uppercase"/>
                             <span asp-validation-for="idPlan" class="text-danger"></span>
                      </div>
@@ -110,6 +112,7 @@
 
 
                         <div class="form-group">
+                            <label>Nombre</label>
 
                             <input asp-for="nombre" class="form-control inputs" placeholder="Nombre" />
                             <span asp-validation-for="nombre" class="text-danger"></span>
@@ -127,6 +130,8 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Descripcion</label>
+
                             <textarea asp-for="descripcion" rows="3" cols="20" class="form-control inputs" placeholder="Descripción"></textarea>
 
                             <span asp-validation-for="descripcion" class="text-danger"></span>
@@ -139,6 +144,8 @@
                     
                     <div class="form-group  col-8">
                         @*Eliminar los espacios en blanco*@
+                                <label>Código riesgo</label>
+
                             <input asp-for="codigoRiesgo" class="form-control inputs" placeholder="Codigo Riesgo" />
                             <span asp-validation-for="codigoRiesgo" class="text-danger"></span>
                      </div>
@@ -168,6 +175,7 @@
                             <span asp-validation-for="categoria" class="text-danger"></span>
                         </div>
                         <div class="form-group">
+                            <label>Fecha</label>
 
                             <input asp-for="fecha" class="form-control inputs" placeholder="Fecha" />
                             <span asp-validation-for="fecha" class="text-danger"></span>
@@ -187,6 +195,7 @@
                     </div>
                     <div class="col-xl-4 col-md-6 col-sm-12">
                         <div class="form-group">
+                            <label>Observaciones</label>
 
                             <textarea asp-for="observaciones" rows="6" cols="50" class="form-control inputs" placeholder="Observaciones"></textarea>
                             <span asp-validation-for="observaciones" class="text-danger"></span>

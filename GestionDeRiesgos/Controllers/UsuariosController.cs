@@ -331,22 +331,22 @@ namespace GestionDeRiesgos.Controllers
             //se crean las condiciones para mandar un mensaje al frond-end en caso de que estas no se cumplan
             if (firstCheck == false)
             {
-                MensajeContrasena = "La contraseña debe contener almenos una letra mayúscula";
+                MensajeContrasena = "La contraseña debe contener al menos una letra mayúscula";
 
             }
             if (secondCheck == false)
             {
-                MensajeContrasena = "La contraseña debe contener almenos una letra minúscula";
+                MensajeContrasena = "La contraseña debe contener al menos una letra minúscula";
 
             }
             if (thirdCheck == false)
             {
-                MensajeContrasena = "La contraseña debe contener almenos un número";
+                MensajeContrasena = "La contraseña debe contener al menos un número";
 
             }
             if (FourthcCheck == false)
             {
-                MensajeContrasena = "La contraseña debe contener almenos uno de los siguientes símbolos (* $ % & # + / . - ,)";
+                MensajeContrasena = "La contraseña debe contener al menos uno de los siguientes símbolos (* $ % & # + / . - ,)";
 
             }
             if (LongitudMinima < 8)

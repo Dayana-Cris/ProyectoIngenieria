@@ -57,6 +57,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:#41ADE7; font-weight:bold;"><i class="bi bi-radioactive me-2"></i>Riesgos</a>
                             <div class="dropdown-menu">
+
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                     <a class="nav-link text-dark bg-light align-content-center " style="display: flex; align-items: center; justify-content: center;"  asp-area="" asp-controller="Riesgos" asp-action="Create">
@@ -161,12 +162,12 @@
                             </div>
                         </li>
                         @*Solo si esta autenticado puede realiazar el cambio de contrasena*@
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated & User.IsInRole("Administrador"))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:#41ADE7;font-weight:bold;"><i class="bi bi-lock-fill me-2"></i>Seguridad</a>
                                 <div class="dropdown-menu">
-                                    @if (User.Identity.IsAuthenticated)
+                                    @if (User.Identity.IsAuthenticated & User.IsInRole("Administrador"))
                                     {
                                         <a  class="nav-link text-dark bg-light align-content-center " style="display: flex; align-items: center; justify-content: center;" asp-area="" asp-controller="Usuarios" asp-action="Create">
                                             
@@ -194,9 +195,9 @@
 
                                         </button>
                                         </a>
-                               
 
-                                    @if (User.Identity.IsAuthenticated)
+
+                                    @if (User.Identity.IsAuthenticated & User.IsInRole("Administrador"))
                                     {
 
 

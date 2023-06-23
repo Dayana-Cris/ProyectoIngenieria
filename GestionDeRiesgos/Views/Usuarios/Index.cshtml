@@ -88,7 +88,13 @@
                 </div>
                 
             </th>
-           
+                    <th>
+                        <div class="encabezadoTabla">
+                            @Html.DisplayNameFor(model => model.rol)
+                        </div>
+
+
+                    </th>
             <th></th>
         </tr>
     </thead>
@@ -113,7 +119,12 @@
                 </div>
                
             </td>
-          
+                        <td class="celdasTabla vertical-line ">
+                            <div class=" ">
+                                @Html.DisplayFor(modelItem => item.rol)
+                            </div>
+
+                        </td>
             <td class="celdasTabla">
                     @if (TempData["Mensaje"] == "opcion1")
                     {
